@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}Reply{% endblock %}
+{% block content %}
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-md-5 centered" style=" padding-bottom : 40px">
+                <div class="row justify-content-center my-3">
+                    <h5>Original Post</h5>
+                </div>
+                <div class="row justify-content-center my-3" style="padding-left: 50px">
+                    {{ entry.content_formatted|safe }}
+                </div>
+
+            </div>
+
+            <div class="col-md-7 centered" style="padding-bottom : 40px">
+                <div class="form-area">
+                    <form action="{% url 'reply-post-view' pk_post=entry.id %}" method="post">
+                        {% csrf_token %}
+                        <div class="container center_div pl-3">
+                            <h4 style="margin-bottom: 15px; margin-top: 10px;text-align: center;">Reply details</h4>
+                                <div class="form-group">
+                                    <label for="text"><strong>Reply Text:</strong></label>
+                                    <div class="col-md-12">
+                                        <textarea class="form-control" name="reply" id="reply" rows="2" placeholder="Reply" required></textarea>
+                                    </div>
+                                </div>
+                            <input type="submit" name="submit" class="btn btn-md btn-outline-dark" style="width:120px; padding-bottom:5px;margin-left:250px;" role="button" aria-pressed="true" value="Submit"/>
+                            <a href="{% url 'home' %}" class="btn btn-md btn-outline-dark" style="width:120px; padding-bottom:5px;">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+{% endblock %}

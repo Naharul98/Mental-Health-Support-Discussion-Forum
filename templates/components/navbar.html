@@ -1,0 +1,53 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+      <a class="navbar-brand" href="#">
+    <img src="{% static "/AntiStressCentre/art.png" %}" width="30" height="30" class="d-inline-block align-top" alt="">
+    Anti-Stress Centre
+  </a>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Topics
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="nav-link" href="{% url 'home' %}" style="color:black">Popular Topics<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{% url 'home-sort' sorting='trending' %}" style="color:black">Trending Topics<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{% url 'home-sort' sorting='new' %}" style="color:black">New Topics<span class="sr-only">(current)</span></a>
+                </div>
+            </li>
+            {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'my-discussions-view' user.username %}">My Topics</a>
+                </li>
+                <li class="nav-item">
+
+                    <a class="nav-link" href="{% url 'create-post-view' %}">Create New Topic</a>
+                </li>
+            {% endif %}
+            <li class="nav-item">
+                    <a class="nav-link" href="{% url 'help-view' %}">Help</a>
+            </li>
+        </ul>
+        {% if user.is_authenticated %}
+            <ul class="inline my-2 my-lg-0" style="list-style-type: none;">
+                <li class="nav-item dropdown ml-auto">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  style="color:white;">{{ user.username }}</a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="{% url 'logout' %}">Log out</a>
+                    </div>
+                </li>
+            </ul>
+        {% else %}
+            <form class="form-inline my-2 my-lg-0">
+                <a href="{% url 'signup' %}" class="btn btn-light my-2 my-sm-0 mr-1">Register</a>
+                <a href="{% url 'login' %}" class="btn btn-light my-2 my-sm-0">Login</a>
+            </form>
+        {% endif %}
+    </div>
+</nav>

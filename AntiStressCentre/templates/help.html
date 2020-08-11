@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %}Help{% endblock %}
+{% load static %}
+{% block content %}
+
+    <style>
+        .covered{
+            position:relative;
+
+            padding:30px;
+        }
+
+        .covered-img{
+            background:url('{% static "/AntiStressCentre/art.png" %}');
+            opacity: .1;
+
+            background-size:cover;
+            background-position:center;
+
+            position:absolute;
+            top:0;bottom:0;left:0;right:0;
+        }
+
+    </style>
+    <div class = "container pt-4 pb-4">
+        <div class="row">
+            <div class="col-xs-12 covered">
+                <div class="covered-img"></div>
+
+                        <section class = "content" id = "Rules">
+            <h1 class = "text-uppercase" class ="text-left">Help</h1>
+            <p class = "text-lead-justify"class ="text-center">
+                Our Community grows larger and larger by the day and we are more than happy to welcome anyone and <br> everyone into our large family. With that being said, please follow the following guidelines for engaging in <br> the community.
+            </p>
+
+            <h3 class = "text-uppercase">Guidelines:</h3>
+
+            <ul style="list-style-type:disc;">
+                <li>The first step of joining the community involves creating an account. You only need a username of your <br>choice and password to do so.</li>
+                <li>Once an account has been created, please login using your username and password.</li>
+                <li>Once logged in, you will be able to create a new topic to discuss about your issues with our community.</li>
+                <li>Once your topic is created, other members of the community will be able to see your topic and reply to <br>provide support.</li>
+                <li>You will also be able to reply to posts and continue the discussion.</li>
+                <li>Please feel free to browse topics created by others in the community as well, to provide support.</li>
+                <li>If you would like to revisit topics created by yourself in the future, click the 'My Topics' menu.</li>
+                <li>Click on the topics menu to sort topics according to three categories - 'Trending, New and Popular'.</li>
+                <li>You can delete your own comments if you believe you have made an error by clocking 'delete' beside a <br> comment</li>
+
+            </ul>
+
+
+        </section>
+            </div>
+        </div>
+
+
+    </div>
+{% endblock %}

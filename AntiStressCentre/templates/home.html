@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+
+    <div class="container-fluid">
+        <section class="search-banner bg-light text-black py-4 bg-white text-dark" id="banner">
+            <div class="row" >
+                <div class="col-lg-7">
+                    <div class="row ml-2" >
+                        <h5 class="pl-3"><strong>Topics</strong></h5>
+                    </div>
+                    <div class="row ml-2" >
+                        {% if not user.is_authenticated %}
+                            <h7 class="pl-3"><a href="/accounts/login/">Login</a> or <a href="accounts/signup">Register</a> to create or reply to topics!</h7>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    {% load mptt_tags %}
+    <ul class="entry" style="padding-left: 38px;">
+        {% if not entries %}
+            <h6>There are no topics to show.</h6>
+        {% endif %}
+        <!-- mttp tree start -->
+        {% for node in entries %}
+            {% if node.user.pk == user.pk %}
+
+                <li class="usernode">
+                    {% elif node.is_root_node %}
+                <li class="rootnode">
+                    {% elif node.user.pk == node.get_root.user.pk %}
+                <li class="opnode">
+                    {% else %}
+                <li class="commentnode">
+            {% endif %}
+        <div class="entryBox">
+            <a class="entry-anchor" id="{{ node.pk }}"></a>
+            <p style="margin-bottom: 1px">
+                <a href="{% url 'posts-detail-view' node.pk %}" style="margin-left: 5px; font-size: 14px;"><strong>{{node.title }}</strong></a>
+                <small><em>Votes:</em></small>
+                <strong class="entry-points" data-id="{{node.pk}}">{{ node.votes_sum }}</strong>
+            </p>
+            <div id="content{{node.pk}}" class="entry-content {% if node.deleted %}deleted text-muted{% endif %}" value="{{node.pk}}" style="{% if entry.pk == node.pk %}background-color: yellow;{% endif %}">{{ node.content_formatted|safe }}</div>
+        </div>
+        </li>
+            {% if node.is_root_node %}
+                <hr>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+    <div class="pagination pb-3">
+    <span class="step-links">
+        {% if entries.has_previous %}
+            <a href="?page=1" class="btn btn-sm btn-outline-dark">&laquo; &lt;&lt;</a>
+            <a href="?page={{ entries.previous_page_number }}" class="btn btn-sm btn-outline-dark">&lt;</a>
+        {% endif %}
+
+        <span class="current"><em>Page {{ entries.number }} of {{ entries.paginator.num_pages }}</em></span>
+
+        {% if entries.has_next %}
+            <a href="?page={{ entries.next_page_number }}" class="btn btn-sm btn-outline-dark">&gt;</a>
+            <a href="?page={{ entries.paginator.num_pages }}" class="btn btn-sm btn-outline-dark">&gt;&gt; &raquo;</a>
+        {% endif %}
+    </span>
+    </div>
+
+{% endblock %}
