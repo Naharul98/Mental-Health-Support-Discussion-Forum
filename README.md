@@ -30,3 +30,10 @@ a.	home = <<python installation folder>>
 11.	you should have the URL of the website printed in the command prompt in the format –http://127.0.0.1:8000/. Copy the URL and paste it in any browser to run the website.
 
 ```
+### Libraries Used
+- [Django - 2.2.7](https://www.djangoproject.com)
+- [Django-Mptt - 0.9.1](https://django-mptt.readthedocs.io/en/latest/)
+- [Bootstrap – 4.3.1](https://getbootstrap.com)
+- [JQuery – 3.3.1](https://jquery.com)
+- [Markdown – 3.0.1](https://pypi.org/project/django-markdown/)
+- [Bleach – 3.0.2](https://pypi.org/project/django-bleach/)
