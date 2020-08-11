@@ -1,5 +1,5 @@
 # Mental-Health-Support-Discussion-Forum
-A discussion forum for mental health featuring a [Reddit](http://reddit.com) style tree based comment system.
+A discussion forum for mental health featuring a [Reddit](http://reddit.com) style tree based comment system, voting and sorting.
 
 ### Features
 * Anyone is able to register by creating an anonymous account with a chosen username
