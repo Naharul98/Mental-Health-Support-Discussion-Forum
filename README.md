@@ -15,7 +15,7 @@ A discussion forum for mental health featuring a [Reddit](http://reddit.com) sty
 ### Running Instructions
 ```
 1.Make sure you have python 3.8.2 installed
-2.Extract the project zip file in any path.
+2.Extract the project in any path.
 3.Go inside the scripts folder in the project
 4.Edit the file named ‘Activate.bat’ using notepad or any other application:
     a.In line 11 of the file, amend the path according to the path in which the project was extracted. It should look like as follows:
